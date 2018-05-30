@@ -10,7 +10,7 @@ public class Adresse {
 	private String plz;
 	
 	private String ort;
-
+	
 	//Ab hier werden die Methoden der Klasse erstellt
 
 	@Override
@@ -50,5 +50,4 @@ public class Adresse {
 		this.ort = ort;
 	}
 	
-
 }
