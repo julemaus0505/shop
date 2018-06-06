@@ -10,9 +10,11 @@ public class Shop {
 		Kunde kunde1 = new Kunde();
 		Kunde kunde2 = new Kunde();
 		
+		
 //		Setzen der Variable Name
 		kunde1.setName("Müller");
 		kunde2.setName("Petersen");
+		
 		
 		kunde1.setGeschlecht(Geschlecht.MAENNLICH);
 		kunde2.setGeschlecht(Geschlecht.WEIBLICH);
@@ -39,6 +41,7 @@ public class Shop {
 		kunde1.setVorname("Max");
 		kunde2.setVorname("Julia");
 		
+
 		begrusseKunde(kunde1);
 		begrusseKunde(kunde2);
 		
@@ -46,13 +49,18 @@ public class Shop {
 
 	private static void begrusseKunde(Kunde kunde) {
 //		Bedingte Abfrage
-		if (Geschlecht.WEIBLICH.equals(kunde.getGeschlecht())) {
+		if (Geschlecht.WEIBLICH.equals(kunde.getGeschlecht())) 
 //			Ausgarbe auf der Konsole
 			System.out.println("Hallo Frau "+ kunde);
-		} else {
+	 else 
 			System.out.println("Hallo Herr "+ kunde);
 		
+	
 		}
+		
+		
+	
 	}
 	
-}
+	
+

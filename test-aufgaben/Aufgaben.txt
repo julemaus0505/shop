@@ -1,0 +1,16 @@
+Aufgabe 1:
+Erstelle ein Klasse "Firma" im Package "de.petersen.test" mit folgenden Eigenschaften:
+ - Name
+ - Gründungsdatum (Tip: keine Umlaute [ü = ue] in Klassen/Variablennamen)
+ - Anzahl Mitarbeiter (Tip: Variable ohne Leerzeichen) mit dem Initialwert 0
+ 
+ Erstelle einen Konstruktor der den Namen der Firma und das Gründungsdatum entgegen nimmt 
+ und sie in den Variablen speichert
+ 
+ Erstelle folgende Methoden in der Klasse und fülle Sie mit Leben:
+ 
+    //Fügt einen Mitarbeiter der Firma hinzu [Verändern der Variable 'Anzahl Mitarbeiter']
+ - mitarbeiterEinstellen() (Tip: Kein Rückgabewert [void] und keine Paramter)
+ 
+    //Entfernt einen Mitarbeiter der Firma [Verändern der Variable 'Anzahl Mitarbeiter']
+ - mitarbeiterKuendigen() (Tip: Kein Rückgabewert [void] und keine Paramter)
