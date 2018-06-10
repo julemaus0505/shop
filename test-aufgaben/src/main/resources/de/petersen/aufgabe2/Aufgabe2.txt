@@ -1,0 +1,18 @@
+Aufgabe 1:
+Erstelle ein Klasse "Mitarbeiter" im Package "de.petersen.aufgabe2" mit folgenden Eigenschaften:
+ - Name, Vorname, Geburtsdatum, 
+ - Id (Mitarbeiternummer innerhalb der Firma)
+ - Rolle (die der Mitarbeiter in der Firma hat)
+ 
+ Erstelle einen Konstruktor der die ID, den Vornamen und den Namen des Mitarbeiters entgegen nimmt 
+ und sie in den Variablen speichert
+ 
+ Erstelle für alle Variablen Getter- und Setter-Methoden
+ 
+ Erstelle eine Methode "mitarbeiterdatenAusgeben()" ohne Rückgabewert die die Daten des Mitarbeiters auf der Konsole in der Form:
+ "ID - Vorname Name, geb. am Geburtsdatum" ausgibt.
+ 
+ Bspw. "12345 - Sascha Petersen, geb. am 04.07.1983"
+ 
+ Hinweis:
+ Für die Datumsausgabe musst du einen DateTimeFormatter mit dem Pattern 'dd.MM.yyyy' benutzen
