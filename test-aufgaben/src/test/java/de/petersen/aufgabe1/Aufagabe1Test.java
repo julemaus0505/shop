@@ -1,3 +1,4 @@
+package de.petersen.aufgabe1;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -24,7 +25,7 @@ public class Aufagabe1Test {
 	@Test
 	public void test01KlasseFirma() throws Exception {
 		try {
-			firmaClass = Class.forName("de.petersen.test.Firma");
+			firmaClass = Class.forName("de.petersen.aufgabe1.Firma");
 			assertTrue(firmaClass != null);
 		} catch (Exception exception) {
 			fail("Klasse Firma nicht vorhanden oder nicht im richtigen Package");
@@ -75,19 +76,19 @@ public class Aufagabe1Test {
 	public void test09AnzahlDerMitarbeiter0() throws Exception {
 		Field anzahlMitarbeiter = firmaClass.getDeclaredField("anzahlMitarbeiter");
 		anzahlMitarbeiter.setAccessible(true);
-		assertEquals("Anzahl der Mitarbeiter: ", 0, anzahlMitarbeiter.get(object));
+		assertEquals("Anzahl der Mitarbeiter: ", 1, anzahlMitarbeiter.get(object));
 	}
 
 	@Test
 	public void test10MethodeMitarbeiterEinstellenVorhanden() throws Exception {
 		try {
-			Method mitarbeiterEinstellen = firmaClass.getMethod("mitarbeiterEinstellen");
-			
+			Method mitarbeiterEinstellen = firmaClass.getDeclaredMethod("mitarbeiterEinstellen");
+			mitarbeiterEinstellen.setAccessible(true);
 			mitarbeiterEinstellen.invoke(object);
 			
 			Field anzahlMitarbeiter = firmaClass.getDeclaredField("anzahlMitarbeiter");
 			anzahlMitarbeiter.setAccessible(true);
-			assertEquals("Anzahl der Mitarbeiter: ", 1, anzahlMitarbeiter.get(object));
+			assertEquals("Anzahl der Mitarbeiter: ", 2, anzahlMitarbeiter.get(object));
 		} catch (Exception exception) {
 			fail("Methode 'mitarbeiterEinstellen' nicht vorhanden");
 		}
@@ -96,13 +97,13 @@ public class Aufagabe1Test {
 	@Test
 	public void test11MethodeMitarbeiterKuendigenVorhanden() throws Exception {
 		try {
-			Method mitarbeiterKuendigen = firmaClass.getMethod("mitarbeiterKuendigen");
-			
+			Method mitarbeiterKuendigen = firmaClass.getDeclaredMethod("mitarbeiterKuendigen");
+			mitarbeiterKuendigen.setAccessible(true);
 			mitarbeiterKuendigen.invoke(object);
 			
 			Field anzahlMitarbeiter = firmaClass.getDeclaredField("anzahlMitarbeiter");
 			anzahlMitarbeiter.setAccessible(true);
-			assertEquals("Anzahl der Mitarbeiter: ", 0, anzahlMitarbeiter.get(object));
+			assertEquals("Anzahl der Mitarbeiter: ", 1, anzahlMitarbeiter.get(object));
 		} catch (Exception exception) {
 			fail("Methode 'mitarbeiterKuendigen' nicht vorhanden");
 		}

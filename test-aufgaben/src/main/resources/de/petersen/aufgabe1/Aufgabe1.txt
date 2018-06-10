@@ -2,7 +2,7 @@ Aufgabe 1:
 Erstelle ein Klasse "Firma" im Package "de.petersen.test" mit folgenden Eigenschaften:
  - Name
  - Gründungsdatum (Tip: keine Umlaute [ü = ue] in Klassen/Variablennamen)
- - Anzahl Mitarbeiter (Tip: Variable ohne Leerzeichen) mit dem Initialwert 0
+ - Anzahl Mitarbeiter (Tip: Variable ohne Leerzeichen) mit dem Initialwert 1
  
  Erstelle einen Konstruktor der den Namen der Firma und das Gründungsdatum entgegen nimmt 
  und sie in den Variablen speichert
