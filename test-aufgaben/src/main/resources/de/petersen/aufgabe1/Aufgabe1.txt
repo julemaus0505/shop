@@ -1,5 +1,5 @@
 Aufgabe 1:
-Erstelle ein Klasse "Firma" im Package "de.petersen.test" mit folgenden Eigenschaften:
+Erstelle ein Klasse "Firma" im Package "de.petersen.aufgabe1" mit folgenden Eigenschaften:
  - Name
  - Gründungsdatum (Tip: keine Umlaute [ü = ue] in Klassen/Variablennamen)
  - Anzahl Mitarbeiter (Tip: Variable ohne Leerzeichen) mit dem Initialwert 1

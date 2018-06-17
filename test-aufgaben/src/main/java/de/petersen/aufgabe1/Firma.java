@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Firma {
 
+	//Variablen
 	private String name;
 
 	private LocalDate gruendungsdatum;
@@ -12,11 +13,13 @@ public class Firma {
 
 	private int anzahlMitarbeiter = 1;
 
+	//Konstruktor
 	public Firma(String name, LocalDate gruendungsdatum) {
 		this.name = name;
 		this.gruendungsdatum = gruendungsdatum;
 	}
 
+	//Methoden
 	public void mitarbeiterEinstellen() {
 		this.anzahlMitarbeiter += 1 ;
 	}
