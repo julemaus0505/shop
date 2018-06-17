@@ -12,13 +12,15 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import de.petersen.Testbase;
+
 /**
  * @author sascha
  *
  *  HIER NICHTS ÄNDERN!
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Aufagabe1Test {
+public class Aufagabe1Test extends Testbase {
 	private static Class<?> firmaClass;
 	private static Object object = null;
 	
@@ -109,13 +111,5 @@ public class Aufagabe1Test {
 		}
 	}
 
-	private void testField(Class<?> firmaClass, String eigenschaft, String fieldname, Class<?> typClass) {
-		try {
-			Field field = firmaClass.getDeclaredField(fieldname);
-			assertTrue("Feld '" + eigenschaft + "' vorhanden", field != null);
-			assertTrue(eigenschaft + " ist vom Typ "+typClass.getSimpleName(), typClass.isAssignableFrom(field.getType()));
-		} catch (Exception exception) {
-			fail("Feld " + eigenschaft + " nicht vorhanden");
-		}
-	}
+	
 }

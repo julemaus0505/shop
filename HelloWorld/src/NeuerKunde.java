@@ -1,23 +1,44 @@
-package de.jule.shop;
 
-public class Adresse {
+public class NeuerKunde {
 
-	//Hier werden Variablen der Klasse deklariert (erstellt)
+	private String frau;
+
+	private String vorname;
+
+	private String nachname;
+
 	private String strasse;
-	
+
 	private String hausnummer;
 
 	private String plz;
-	
-	private String ort;
-	
-	//Ab hier werden die Methoden der Klasse erstellt
 
-	@Override
-	public String toString() {
-		return getStrasse() + " " + getHausnummer() + " " + getPlz() + " " + getOrt();
+	private String ort;
+
+	public String getFrau() {
+		return frau;
 	}
-	
+
+	public void setFrau(String frau) {
+		this.frau = frau;
+	}
+
+	public String getVorname() {
+		return vorname;
+	}
+
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
+	}
+
+	public String getNachname() {
+		return nachname;
+	}
+
+	public void setNachname(String nachname) {
+		this.nachname = nachname;
+	}
+
 	public String getStrasse() {
 		return strasse;
 	}
@@ -44,15 +65,10 @@ public class Adresse {
 
 	public String getOrt() {
 		return ort;
+		
 	}
 
 	public void setOrt(String ort) {
 		this.ort = ort;
 	}
-
-	public void getStrasse(String string) {
-		// TODO Automatisch generierter Methodenstub
-		
-	}
-	
 }

@@ -13,6 +13,6 @@ Erstelle ein Klasse "Mitarbeiter" im Package "de.petersen.aufgabe2" mit folgende
  "ID - Vorname Name, geb. am Geburtsdatum" ausgibt.
  
  Bspw. "12345 - Sascha Petersen, geb. am 04.07.1983"
- 
+        12345 - Sascha Petersen , geb. am  04.07.1983
  Hinweis:
  Für die Datumsausgabe musst du einen DateTimeFormatter mit dem Pattern 'dd.MM.yyyy' benutzen
