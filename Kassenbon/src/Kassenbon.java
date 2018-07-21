@@ -65,6 +65,5 @@ public class Kassenbon {
 		double summeEur = bestellung.getPreis() * bestellung.getMenge();
 		System.out.println(String.format("\t\t\t\t %.2f EUR", summeEur));
 		return summeEur;
-
 	}
 }
