@@ -1,11 +1,16 @@
 package de.jupetersen.shop.model;
 
 import javax.swing.event.TableModelListener;
-import javax.swing.table.TableModel;
+import javax.swing.table.AbstractTableModel;
 
 import de.jupetersen.shop.entity.Warenkorb;
 
-public class WarenkorbTableModel implements TableModel {
+public class WarenkorbTableModel extends AbstractTableModel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Warenkorb warenkorb;
 
@@ -41,15 +46,16 @@ public class WarenkorbTableModel implements TableModel {
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-		return String.class;
+		return 2 == columnIndex ? Integer.class : String.class;
 	}
 
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
-		return false;
+		return 2 == columnIndex;
 	}
 
 	@Override
+	// getValueAt gibt die einzelnen Zellenwerte (getProdukt......) wieder.
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		String wert;
 		switch (columnIndex) {
@@ -65,12 +71,16 @@ public class WarenkorbTableModel implements TableModel {
 		default:
 			wert = Double.toString(warenkorb.getEintraege().get(rowIndex).getGesammtpreis());
 		}
-		return wert;
+		return  wert;
 	}
 
 	@Override
+	// setValueAt wird Aufgerufen wenn ein Zellenwert durch den Anwender über die
+	// Oberfläche geändert wurde.
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-
+		System.out.println(String.format("%s\t%d\t%d", aValue.getClass().getName(), rowIndex, columnIndex));
+		warenkorb.getEintraege().get(rowIndex).setMenge(Integer.valueOf(aValue.toString()));
+		fireTableDataChanged();
 	}
 
 	@Override

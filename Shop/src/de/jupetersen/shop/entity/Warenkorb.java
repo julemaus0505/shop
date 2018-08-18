@@ -8,6 +8,7 @@ public class Warenkorb {
 	private Kunde kunde;
 
 	private List<WarenkorbEintrag> eintraege;
+	
 
 	public Warenkorb(Kunde kunde) {
 		this.setKunde(kunde);
