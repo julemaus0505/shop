@@ -35,6 +35,8 @@ public class Shop {
 
 	private static Warenkorb warenkorb;
 
+	private static List<Kunde> kundenList;
+
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException,
 			IllegalAccessException, UnsupportedLookAndFeelException {
 		UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -44,15 +46,16 @@ public class Shop {
 
 		List<Produkt> produkte = produkteAnlegen();
 
-		Kunde kunde = kundenAnlegen();
+		kundenList = Kunde.lesen();
 
-		warenkorb = warenkorbFuellen(kunde, produkte);
+		warenkorb = warenkorbFuellen(kundenList.get(0), produkte);
 
 		frame = new JFrame("Jules Stall Design");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1400, 800);
 		frame.add(getPanelNorth(), BorderLayout.NORTH);
 		frame.setVisible(true);
+
 	}
 
 	private static Warenkorb warenkorbFuellen(Kunde kunde, List<Produkt> produkte) {
@@ -233,11 +236,6 @@ public class Shop {
 		return panelService;
 	}
 
-	private static Kunde kundenAnlegen() {
-		Kunde kundePetersen = new Kunde("julia.petersen0505@gmail.com", "12545582255");
-		return kundePetersen;
-	}
-
 	private static List<Produkt> produkteAnlegen() {
 		List<Produkt> produkte = new ArrayList<>();
 		Produkt produktAlu = new Produkt("Boxenschild Alu", 35.00);
@@ -265,4 +263,7 @@ public class Shop {
 		frame.validate();
 	}
 
+	public static List<Kunde> getKundenList() {
+		return kundenList;
+	}
 }

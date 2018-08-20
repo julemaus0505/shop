@@ -3,14 +3,16 @@ package de.jupetersen.shop.entity;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.application.Application;
 
-// Das sind Klassen.
 public class Kunde {
 	// Das sind Konstanten
 	private static final String KUNDEN_DATEI = "kunden.txt";
@@ -42,6 +44,10 @@ public class Kunde {
 	public Kunde(String email, String passwort) {
 		this.email = email;
 		this.passwort = passwort;
+	}
+
+	public Kunde() {
+		// TODO Automatisch generierter Konstruktorstub
 	}
 
 	// Das sind get und setter Mehtoden.
@@ -141,7 +147,9 @@ public class Kunde {
 
 	public boolean speichern() {
 		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter(KUNDEN_DATEI));
+			// BufferedWriter writer = new BufferedWriter(new FileWriter(KUNDEN_DATEI));
+			BufferedWriter writer = new BufferedWriter(
+					new OutputStreamWriter(new FileOutputStream(KUNDEN_DATEI, true)));
 			writer.write(email);
 			writer.write(";");
 			writer.write(getCrypPasswort(passwort));
@@ -161,7 +169,6 @@ public class Kunde {
 			writer.write(ort);
 			writer.write(";");
 			writer.write(geburtsdatum);
-			writer.newLine();
 			writer.close();
 		} catch (IOException e) {
 			return false;
@@ -169,18 +176,42 @@ public class Kunde {
 		return true;
 	}
 
-	public static void lesen() {
+	/*
+	 * Diese Methode liest die KUNDEN_DATEI zeilenweise ein. Pro Zeile ist ein Kunde
+	 * mit seinen Daten eingetragen. Das heißt pro Zeile wird ein Kunde angelegt zu
+	 * einer List hinzugefügt. Am Ende soll die Methode diese Liste zurück geben
+	 * 
+	 * Hinweise: der BufferedReader liest mit der Methode readLine() eine Zeile ein,
+	 * ist keine Zeile mehr vorhanden liefert er null zurück als Trennsymbol haben
+	 * wir ein ; zwischen die Daten gemacht. Beim Einlesen eignet sich hierfür prima
+	 * die split()-Methode der Klasse String
+	 */
+	public static List<Kunde> lesen() {
+		ArrayList<Kunde> list = new ArrayList<Kunde>();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(new File(KUNDEN_DATEI)));
-			String line = null;
+			String line;
 			while ((line = reader.readLine()) != null) {
-				
-			}
+				String[] arrayVonKundenDaten = line.split(";", -9);
+				Kunde kunde = new Kunde();
+				kunde.setPasswort(arrayVonKundenDaten[1]);
+				kunde.setEmail(arrayVonKundenDaten[0]);
+				kunde.setAnrede(arrayVonKundenDaten[2]);
+				kunde.setVorname(arrayVonKundenDaten[3]);
+				kunde.setNachname(arrayVonKundenDaten[4]);
+				kunde.setStrasse(arrayVonKundenDaten[5]);
+				kunde.setHausnummer(arrayVonKundenDaten[6]);
+				kunde.setPlz(arrayVonKundenDaten[7]);
+				kunde.setOrt(arrayVonKundenDaten[8]);
+				kunde.setGeburtsdatum(arrayVonKundenDaten[9]);
+				list.add(kunde);
 
+			}
+			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		return list;
 	}
 
 	public static String getCrypPasswort(String passwort) {

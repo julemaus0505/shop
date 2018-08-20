@@ -1,6 +1,7 @@
 package de.jupetersen.shop;
 
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -75,6 +76,9 @@ public class KundenRegistrierenPanel {
 					JOptionPane.showMessageDialog(panelRegistrieren, "Die E-Mail Adresse ist nicht korrekt.",
 							"Fehlermeldung", JOptionPane.ERROR_MESSAGE);
 
+				} else if (Shop.getKundenList().stream()
+						.filter(kunde -> kunde.getEmail().equals(emailTextField.getText())).count() >= 1) {
+
 				} else if (vornameTextField.getText() == null || vornameTextField.getText().length() == 0
 						|| nachnameTextField.getText() == null || nachnameTextField.getText().length() == 0
 						|| strasseTextField.getText() == null || strasseTextField.getText().length() == 0
@@ -97,6 +101,7 @@ public class KundenRegistrierenPanel {
 					kunde.setPlz(plzTextField.getText());
 					kunde.setStrasse(strasseTextField.getText());
 					kunde.setVorname(vornameTextField.getText());
+
 					kunde.speichern();
 				}
 			}
@@ -105,6 +110,11 @@ public class KundenRegistrierenPanel {
 
 		return panelRegistrieren;
 
+	}
+
+	public boolean checkFile(File file) {
+		// TODO Automatisch generierter Methodenstub
+		return false;
 	}
 
 }
