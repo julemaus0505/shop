@@ -11,7 +11,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.application.Application;
 
 public class Kunde {
 	// Das sind Konstanten
@@ -203,7 +202,6 @@ public class Kunde {
 				kunde.setHausnummer(arrayVonKundenDaten[6]);
 				kunde.setPlz(arrayVonKundenDaten[7]);
 				kunde.setOrt(arrayVonKundenDaten[8]);
-				kunde.setGeburtsdatum(arrayVonKundenDaten[9]);
 				list.add(kunde);
 
 			}
@@ -214,6 +212,10 @@ public class Kunde {
 		return list;
 	}
 
+	public static String getCrypPasswort(char[] passwort) {
+		return getCrypPasswort(new String(passwort));
+	}
+	
 	public static String getCrypPasswort(String passwort) {
 		String cryptPasswort = passwort;
 		try {

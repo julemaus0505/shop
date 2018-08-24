@@ -3,16 +3,18 @@ package de.jupetersen.shop;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.AbstractAction;
+
 import javax.swing.JButton;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -27,6 +29,7 @@ import de.jupetersen.shop.entity.Produkt;
 import de.jupetersen.shop.entity.Warenkorb;
 import de.jupetersen.shop.entity.WarenkorbEintrag;
 import de.jupetersen.shop.model.WarenkorbTableModel;
+import javafx.scene.control.PasswordField;
 import net.miginfocom.swing.MigLayout;
 
 public class Shop {
@@ -133,7 +136,9 @@ public class Shop {
 		panelNorth.add(service);
 
 		panelNorth.setBackground(new Color(138, 160, 168));
+
 		return panelNorth;
+
 	}
 
 	private static JPanel getPanelWarenkorb() {
@@ -144,8 +149,8 @@ public class Shop {
 	}
 
 	private static JPanel getPanelAnmeldung() {
-		JPanel panelAnmeldung = new JPanel(new MigLayout("", "[]100[100]", ""));
-		panelAnmeldung.add(new JLabel("Email *"));
+		JPanel panelAnmeldung = new JPanel(new MigLayout("", "[]100[200]", ""));
+		panelAnmeldung.add(new JLabel("E-mail *"));
 		JTextField email = new JTextField();
 		panelAnmeldung.add(email, "growx, wrap");
 		JPasswordField passwort = new JPasswordField();
@@ -153,9 +158,35 @@ public class Shop {
 		panelAnmeldung.add(passwort, "growx, wrap");
 
 		JButton anmelden = new JButton(new AbstractAction("Anmelden") {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
+				if (!email.getText().contains("@")) {
+
+					JOptionPane.showMessageDialog(getPanelAnmeldung(), "Die E-Mail Adresse ist nicht korrekt.",
+							"Fehlermeldung", JOptionPane.ERROR_MESSAGE);
+
+				}
+
+				if (Shop.getKundenList().stream()
+						.filter(kunde -> kunde.getEmail().equals(email.getText())
+								&& kunde.getPasswort().equals(Kunde.getCrypPasswort(passwort.getPassword())))
+						.count() >= 1) {
+
+					JOptionPane.showMessageDialog(panelAnmeldung, "Sie haben sich erfolgreich eingeloggt");
+				}
+
+				else if (passwort.equals(passwort) || email.equals(email))
+
+					JOptionPane.showMessageDialog(panelAnmeldung,
+							"Ungültige E-Mail oder Passwort, sie sind noch nicht registriert", "Fehlermeldung",
+							JOptionPane.ERROR_MESSAGE);
 			}
+
+			{
+			}
+
 		});
 
 		JButton registrieren = new JButton(new AbstractAction("Neu Registrieren") {

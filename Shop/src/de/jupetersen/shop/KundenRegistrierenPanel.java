@@ -1,7 +1,6 @@
 package de.jupetersen.shop;
 
 import java.awt.event.ActionEvent;
-import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -79,6 +78,9 @@ public class KundenRegistrierenPanel {
 				} else if (Shop.getKundenList().stream()
 						.filter(kunde -> kunde.getEmail().equals(emailTextField.getText())).count() >= 1) {
 
+					JOptionPane.showMessageDialog(panelRegistrieren, "E-Mail-Adresse ist bereits registriert.",
+							"Fehlermeldung", JOptionPane.ERROR_MESSAGE);
+
 				} else if (vornameTextField.getText() == null || vornameTextField.getText().length() == 0
 						|| nachnameTextField.getText() == null || nachnameTextField.getText().length() == 0
 						|| strasseTextField.getText() == null || strasseTextField.getText().length() == 0
@@ -112,9 +114,32 @@ public class KundenRegistrierenPanel {
 
 	}
 
-	public boolean checkFile(File file) {
-		// TODO Automatisch generierter Methodenstub
-		return false;
-	}
+	// public class KundenAnmeldenPanel {
+	// static JPanel getPanelAnmelden() {
+	//
+	// JPanel panelAnmelden = new JPanel(new MigLayout("", "[300]", ""));
+	// panelAnmelden.add(new JLabel("E-mail Adresse *"), "wrap");
+	// JTextField emailTextField = new JTextField();
+	// panelAnmelden.add(emailTextField, "growx, wrap");
+	// panelAnmelden.add(new JLabel("Passwort *"), "wrap");
+	// JPasswordField passwortTextField = new JPasswordField();
+	// panelAnmelden.add(passwortTextField, "growx, wrap");
+	//
+	// JButton anmelden = new JButton(new AbstractAction("Anmelden") {
+	//
+	// @Override
+	// public void actionPerformed(ActionEvent e) {
+	//
+	// if (passwortTextField.getPassword() == null ||
+	// passwortTextField.getPassword().length == 0
+	// || emailTextField.getText() == null || emailTextField.getText().isEmpty()) {
+	// // Fehlermeldung ausgeben
+	// JOptionPane.showMessageDialog(panelAnmelden, "E-Mail oder Passwort ist nicht
+	// korrekt.",
+	// "Fehlermeldung", JOptionPane.ERROR_MESSAGE);
+	// }
+	// }
+	//
+	// }
 
 }
