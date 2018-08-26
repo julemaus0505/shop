@@ -1,0 +1,13 @@
+JavaFX trennt die grafische Oberfläche und der zugehörigen Logik (im Quellcode)
+grafische Oberfläche wird in der FXML-Datei beschrieben.
+zu einer FXML-Datei gehört eine Controller-Klasse mit gleichem Namen.
+In diese wird dann die Logik, wie bspw. Klick auf einen Button beschrieben.
+
+Eine FXML-Datei wird mittels dem FXMLLoader geladen:
+	BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("ShopFx.fxml"));
+
+Dabei wird das erste Element aus der FXML-Datei zurückgegeben. Das ganze ist wie ein Baum mit Ästen gegliedert 
+und das erste Element bildet die Wurzel, daher "root".
+
+
+
